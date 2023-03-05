@@ -176,6 +176,7 @@ window.onload = function () {
       data[event.key].sound.play();
       newCircle.fillColor = data[event.key].color;
       circles.push(newCircle);
+      console.log(circles);
     }
   };
 
@@ -183,6 +184,10 @@ window.onload = function () {
     for (let i = 0; i < circles.length; i++) {
       circles[i].fillColor.hue += 1;
       circles[i].scale(0.95);
+      if (circles[i].area < 1) {
+        circles[i].remove();
+        circles.splice(i, 1);
+      }
     }
   };
 
